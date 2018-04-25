@@ -11,11 +11,11 @@
 
   <body>
     <header>
-      <h1>Feet</h1>
+      <h1>BETTERREDDIT</h1>
     </header>
     <%= yield %>
     <footer>
-      <h3>not feet</h3>
+      <%= button_to 'View Routes', '/rails/info', method: :get unless Rails.env.production? %>
     </footer>
-  </body>
+    </body>
 </html>
