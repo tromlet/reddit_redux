@@ -3,15 +3,38 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 table{
-  width: 100vw;
+  width: 100%;
   border: 1px solid black;
   border-radius: 5px;
+  color: #ffffff;
+  font-family: Barlow, sans-serif;
 
-  td{
+  thead{
+    font-family: inherit;
+    text-align: center;
+    background-color: #5E7AA1;
+
+    .votes{
+      width: 20%;
+    }
+  }
+
+  tbody{
+    font-family: inherit;
     border-radius: 5px;
-  }
 
-  .topicRow{
-    background-color: lightgrey;
+    .points{
+      background-color: #465B78;
+      border-radius: 5px;
+      padding: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: monospace;
+    }
   }
+}
+
+.upvote, .downvote{
+  padding: 2px 4px;
 }

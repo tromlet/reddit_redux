@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_24_220551) do
+ActiveRecord::Schema.define(version: 2018_04_26_172244) do
 
   create_table "topics", force: :cascade do |t|
     t.string "title"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2018_04_24_220551) do
     t.integer "topic_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "upvote", default: false
   end
 
 end

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BetterReddit</title>
+    <link href="https://fonts.googleapis.com/css?family=Barlow|Barlow+Condensed:200,700" rel="stylesheet">
+    <title>WorseReddit</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,12 +11,14 @@
   </head>
 
   <body>
-    <header>
-      <h1>BETTERREDDIT</h1>
-    </header>
-    <%= yield %>
-    <footer>
-      <%= button_to 'View Routes', '/rails/info', method: :get unless Rails.env.production? %>
-    </footer>
-    </body>
+    <div class="container">
+      <header>
+        <h1><span class="lighth1">WORSE</span><span class="boldh1">REDDIT<span></h1>
+      </header>
+      <%= yield %>
+      <footer>
+        <%= button_to 'View Routes', '/rails/info', method: :get unless Rails.env.production? %>
+      </footer>
+    </div>
+  </body>
 </html>
