@@ -1,2 +1,52 @@
-// Custom bootstrap variables must be set or imported *before* bootstrap.
-@import "bootstrap";
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_default
+ *= require_tree .
+ *= require_self
+ */
+
+body{
+ background-color: #232F40;
+
+ .boldh1{
+   color: #ffffff;
+   font-family: "Barlow Condensed", sans-serif;
+   font-weight: 600;
+   font-size: 1.5em;
+ }
+
+ .lighth1{
+   color: #ffffff;
+   font-family: "Barlow Condensed", sans-serif;
+   font-weight: 200;
+   font-size: 1.5em;
+  }
+
+  .navbar{
+    background-color: #5E7AA1;
+    border-radius: 5px;
+  }
+
+  .topic, .submit, .comment{
+    background-color: #5E7AA1;
+    margin: 1em 0em;
+  }
+
+  .sectionText{
+    color: #ffffff;
+  }
+
+  .wrFooter{
+    color: #C6DEFF;
+  }
+}

@@ -1,29 +1,30 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Topics</h1>
 
-<table>
+<table class="table table-dark table-sm table-striped">
   <thead>
     <tr>
+      <th class="votes">Votes</th>
       <th>Title</th>
-      <th colspan="3"></th>
+      <th class="Delete"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @topics.each do |topic| %>
-      <tr class="topicRow">
+      <tr class="topicRow" id="topicRow<%= topic.id %>">
         <td>
-          <%= pluralize(topic.votes.count, "downvote")%>
-          <%= button_to('-1', downvote_topic_path(topic))%>
+          <div class="pointsContainer">
+            <div class="points"></div>
+            <span><%= button_to '+1', upvote_topic_path(topic), remote: :true, class: "upvote btn btn-secondary #{'btn-success' if user_voted?(topic, true)}"%></span>
+            <span class="voteCount"><%= pluralize(topic.vote_tally, "point")%></span>
+            <span><%= button_to '-1', downvote_topic_path(topic), remote: :true, class: "downvote btn btn-secondary #{'btn-danger' if user_voted?(topic, false)}"%></span>
+          </div>
         </td>
-        <td><%= link_to topic.title, topic %></td>
+        <td><%= link_to topic.title, topic %><br>
+        <span class="topicCaption">Author:  <%= topic.user.email %></span><br>
+        <span class="topicCaption">Posted:  <%= time_ago_in_words topic.created_at %> ago</span></td>
         <td><%= link_to 'Delete', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Topic', new_topic_path %>

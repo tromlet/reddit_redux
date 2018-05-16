@@ -1,0 +1,8 @@
+// Step 1:  Update vote count
+$('#topicRow<%= @topic.id %>').find('.voteCount').text('<%= pluralize(@topic.vote_tally, "point")%>');
+
+// Step 2:  Update button color
+$('#topicRow<%= @topic.id %>').find('.upvote').toggleClass('btn-success');
+
+// Step 3:
+$('#topicRow<%= @topic.id %>').find('.upvote').removeClass('btn-danger');

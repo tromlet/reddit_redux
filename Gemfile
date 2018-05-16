@@ -36,7 +36,14 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+# Adds the Bootstrap CSS/JS framework
 gem 'bootstrap', '~> 4.1.0'
+
+# Devise, for user authentication
+gem 'devise'
+
+# Faker, to generate fake data so we can have a better look at our site with lots of data
+gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

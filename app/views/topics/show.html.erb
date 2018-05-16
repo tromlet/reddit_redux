@@ -1,14 +1,51 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @topic.title %>
-</p>
+<div class="card text-white topic">
+  <div class="card-header">
+    <strong><%= @topic.title %></strong>
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p><%= @topic.description.html_safe %></p>
+      <footer class="blockquote-footer wrFooter"><%= "#{@topic.user.email} #{time_ago_in_words(@topic.updated_at)} ago" %></footer>
+    </blockquote>
+  </div>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @topic.description %>
-</p>
+<div class="card text-white topic">
+  <div class="card-header">
+    <strong><%= "Add a comment:" %></strong>
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <%= form_with(model: [ @topic, @topic.comments.build ], local: true) do |form| %>
+      <p>
+        <%= form.label "Comment Text" %><br>
+        <%= form.text_area :body %><br>
+      </p>
+
+      <footer class="blockquote-footer"><%= form.submit %></footer>
+      <% end %>
+    </blockquote>
+  </div>
+</div>
+
+<h2 class="sectionText">Comments:</h2>
+<% @topic.comments.each do |comment| %>
+  <% unless comment.user.nil? %>
+    <div class="card text-white comment">
+      <div class="card-header">
+        <strong><%= comment.user.email %></strong>
+      </div>
+      <div class="card-body">
+        <blockquote class="blockquote mb-0">
+          <p><%= comment.body %></p>
+          <footer class="blockquote-footer"><%= time_ago_in_words comment.updated_at %></footer>
+        </blockquote>
+      </div>
+    </div>
+  <% end %>
+<% end %>
 
 <%= link_to 'Edit', edit_topic_path(@topic) %> |
 <%= link_to 'Back', topics_path %>

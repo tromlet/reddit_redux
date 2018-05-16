@@ -28,3 +28,7 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Ignore the folder with all the sketch shit and other source images and stuff that we don't need to
+# bring on into the actual git shit.
+/app/assets/source_assets
