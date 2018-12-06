@@ -3,15 +3,67 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 table{
-  width: 100vw;
-  border: 1px solid black;
+  width: 100%;
   border-radius: 5px;
+  color: #E8F1FF;
+  font-family: Barlow, sans-serif;
 
-  td{
+  thead{
+    font-family: inherit;
+    text-align: center;
+    background-color: #5E7AA1;
+
+    .votes{
+      width: 150px;
+    }
+
+    .delete{
+      width: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  tbody{
+    background-color: #2E3C4F;
     border-radius: 5px;
-  }
 
-  .topicRow{
-    background-color: lightgrey;
+    tr{
+      td{
+        // display: flex;
+
+      }
+      a{
+        color: #ffffff;
+
+        &:hover{
+          // color: #
+        }
+      }
+    }
+
+    .pointsContainer{
+      background-color: #465B78;
+      border-radius: 3px;
+      padding: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: monospace;
+
+      .points{
+
+      }
+    }
   }
+}
+
+.upvote, .downvote{
+  padding: 2px 4px;
+}
+
+.upvote{
+  // background: url("../images/voteArrow.svg");
 }

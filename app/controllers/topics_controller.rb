@@ -1,10 +1,11 @@
 class TopicsController < ApplicationController
-  before_action :set_topic, only: [:show, :edit, :update, :destroy]
+  before_action :set_topic, only: [:show, :edit, :update, :destroy, :downvote, :upvote]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /topics
   # GET /topics.json
   def index
-    @topics = Topic.all
+    @topics = Topic.all.order(created_at: :desc)
   end
 
   # GET /topics/1
@@ -25,6 +26,7 @@ class TopicsController < ApplicationController
   # POST /topics.json
   def create
     @topic = Topic.new(topic_params)
+    @topic.user_id = current_user.id
 
     respond_to do |format|
       if @topic.save
@@ -62,9 +64,11 @@ class TopicsController < ApplicationController
   end
 
   def downvote
-    @topic = Topic.find(params[:id])
-    @topic.votes.create
-    redirect_to(topics_path)
+    create_vote({upvote: false, user_id: current_user.id})
+  end
+
+  def upvote
+    create_vote({upvote: true, user_id: current_user.id})
   end
 
   private
@@ -76,5 +80,20 @@ class TopicsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def topic_params
       params.require(:topic).permit(:title, :description)
+    end
+
+    def create_vote(vote_options)
+      @vote = @topic.votes.find_by_user_id(current_user.id)
+      if @vote.nil?
+        @topic.votes.create(vote_options)
+      else
+        if @vote.upvote == vote_options[:upvote]
+          @vote.destroy
+        else
+          @vote.update_attributes(vote_options)
+        end
+      end
+
+      # redirect_to(topics_path)
     end
 end
